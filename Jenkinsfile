@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '''
-                    echo 'Building..'
-                    docker build -t myapp .
-                '''
+                docker.build('myapp')
             }
         }
         stage('Run') {
