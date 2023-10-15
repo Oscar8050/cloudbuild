@@ -1,3 +1,4 @@
+pipeline trigger
 slash
 new token
 rm secret
