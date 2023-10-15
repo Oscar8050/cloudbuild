@@ -1,9 +1,20 @@
 pipeline {
     agent any
     stages {
+        stage('Clone') {
+            steps {
+                sh '''
+                    echo 'Cloning..'
+                    ls -la
+                '''
+            }
+        }
         stage('Build') {
             steps {
-                docker.build('myapp')
+                sh '''
+                    echo 'Building..'
+                    docker build -t myapp .
+                '''
             }
         }
         stage('Run') {
