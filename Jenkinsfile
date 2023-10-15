@@ -3,7 +3,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh '''
+                    echo 'Building..'
+                    docker build -t myapp .
+                '''
+            }
+        }
+        stage('Run') {
+            steps {
+                sh '''
+                    echo 'Running..'
+                    docker run -d -p 80:80 myapp
+                '''
             }
         }
         stage('Test') {
