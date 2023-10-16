@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                     echo 'Cloning..'
                     ls -la
-                    docker ps
+                    docker run hello-world
                 '''
             }
         }
