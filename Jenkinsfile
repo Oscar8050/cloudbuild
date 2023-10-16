@@ -30,11 +30,14 @@ pipeline {
         }
         stage('Deploy Production') {
             steps {
-                sh '''
-                echo 'Deploying production....'
-                docker tag myapp gcr.io/software-engineering/backend
-                docker push gcr.io/software-engineering/backend
-                '''
+                withCredentials([file(credentialsId: '26e63e4f-bdb1-4dbe-aff6-5fff32b84189', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    sh '''
+                    echo 'Deploying production....'
+                    gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                    docker tag myapp gcr.io/software-engineering/backend
+                    docker push gcr.io/software-engineering/backend
+                    '''
+                }
 
             }
         }
