@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh '''
                     echo 'Running..'
-                    docker run -d -p 80:80 myapp
+                    docker run -d myapp
                 '''
             }
         }
