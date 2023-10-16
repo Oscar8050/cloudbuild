@@ -7,9 +7,9 @@ pipeline {
                     sh '''
                     echo 'Testing..'
                     echo 'why'
-                    gcloud version
-                    gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
-                    gcloud compute zone list
+                    // gcloud version
+                    // gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                    // gcloud compute zone list
                     '''
                 }
                 
