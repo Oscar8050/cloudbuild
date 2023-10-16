@@ -3,7 +3,15 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'Testing..'
+                withCredentials([string(credentialsId: '26e63e4f-bdb1-4dbe-aff6-5fff32b84189', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    sh '''
+                    echo 'Testing..'
+                    gcloud version
+                    gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                    gcloud compute zone list
+                    '''
+                }
+                
             }
         }
         stage('Build') {
