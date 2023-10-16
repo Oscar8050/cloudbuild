@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                withCredentials([string(credentialsId: '26e63e4f-bdb1-4dbe-aff6-5fff32b84189', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                withCredentials([string(credentialsId: 'gcp', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                     sh '''
                     echo 'Testing..'
                     echo 'why'
