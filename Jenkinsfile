@@ -19,6 +19,7 @@ pipeline {
                 sh '''
                     echo 'Building..'
                     docker build -t myapp .
+                    echo 'Build done!'
                 '''
             }
         }
