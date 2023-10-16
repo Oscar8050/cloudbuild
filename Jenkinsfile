@@ -1,14 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Clone') {
+        stage('Test') {
             steps {
-                sh '''
-                    echo 'Cloning..'
-                    ls -la
-                    whoami
-                    docker run hello-world
-                '''
+                echo 'Testing..'
             }
         }
         stage('Build') {
@@ -19,22 +14,20 @@ pipeline {
                 '''
             }
         }
-        stage('Run') {
+        stage('Deploy Staging') {
+            steps {
+                echo 'Deploying staging....'
+
+            }
+        }
+        stage('Deploy Production') {
             steps {
                 sh '''
-                    echo 'Running..'
-                    docker run -d myapp
+                echo 'Deploying production....'
+                docker tag myapp gcr.io/software-engineering/backend
+                docker push gcr.io/software-engineering/backend
                 '''
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+
             }
         }
     }
