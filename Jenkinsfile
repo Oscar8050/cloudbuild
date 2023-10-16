@@ -38,6 +38,7 @@ pipeline {
                     gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                     docker tag myapp gcr.io/software-engineering-401503/myapp
                     docker push gcr.io/software-engineering-401503/myapp
+                    gcloud run deploy --image gcr.io/software-engineering-401503/myapp --platform managed --region us-central1 --allow-unauthenticated
                     '''
                 }
 
